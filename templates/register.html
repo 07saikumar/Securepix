@@ -1,0 +1,169 @@
+{% extends 'secure.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url('/static/background.jpg');
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #357ab8;
+        }
+        .error {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .error ul {
+            padding-left: 1.5rem;
+        }
+        .error li {
+            list-style-type: disc;
+        }
+        input[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </p>
+            <p>
+                <label for="id_password1">Password:</label>
+                {{ form.password1 }}
+            </p>
+            <p>
+                <label for="id_password2">Password confirmation:</label>
+                {{ form.password2 }}
+            </p>
+            {% if error %}
+                <div class="error">
+                    <ul>
+                        {% for field, messages in error.items %}
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="error"></div>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            const password1 = document.getElementById('id_password1');
+            const password2 = document.getElementById('id_password2');
+            const submitButton = document.querySelector('input[type="submit"]');
+            const errorDiv = document.querySelector('.error');
+
+            const validatePasswords = () => {
+                let messages = [];
+                if (password1.value.length < 8) {
+                    messages.push('The password must be at least 8 characters long.');
+                }
+                if (!/[A-Z]/.test(password1.value)) {
+                    messages.push('The password must contain at least one uppercase letter.');
+                }
+                if (!/[a-zA-Z]/.test(password1.value) || !/\d/.test(password1.value)) {
+                    messages.push('The password must be alphanumeric (contain both letters and numbers).');
+                }
+                if (!/[!@#$%^&*(),.?":{}|<>]/.test(password1.value)) {
+                    messages.push('The password must contain at least one special character.');
+                }
+                if (password1.value !== password2.value) {
+                    messages.push('The passwords do not match.');
+                }
+
+                errorDiv.innerHTML = '';
+                if (messages.length > 0) {
+                    errorDiv.innerHTML = `<ul>${messages.map(msg => `<li>${msg}</li>`).join('')}</ul>`;
+                    submitButton.disabled = true;
+                } else {
+                    submitButton.disabled = false;
+                }
+            };
+
+            password1.addEventListener('input', validatePasswords);
+            password2.addEventListener('input', validatePasswords);
+
+            form.addEventListener('submit', (event) => {
+                if (submitButton.disabled) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock body %}

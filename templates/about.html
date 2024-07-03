@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About SecurePix{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SecurePix</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; /* Prevent background image from tiling */
+            background-attachment: fixed; /* Ensure background image doesn't scroll with content */
+            color: #fff;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8); /* Darkened semi-transparent background for header */
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for content */
+            border-radius: 10px; /* Increased border radius for a smoother appearance */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Added box shadow for depth */
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 3em; /* Increased font size for header */
+            color: #007bff; /* Bright blue color for header text */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added text shadow for depth */
+            transition: color 0.3s ease-in-out; /* Smooth color transition on hover */
+        }
+        h1:hover {
+            color: #ff6c00; /* Change color on hover */
+        }
+        p {
+            line-height: 1.6; /* Improved line height for better readability */
+            font-size: 1.2em; /* Increased font size for paragraphs */
+        }
+        @media (max-width: 768px) {
+            /* Responsive styling for smaller screens */
+            .container {
+                padding: 15px; /* Adjusted padding for smaller screens */
+                max-width: 90%; /* Adjusted max-width for smaller screens */
+            }
+            h1 {
+                font-size: 2.5em; /* Adjusted font size for smaller screens */
+            }
+            p {
+                font-size: 1em; /* Adjusted font size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About SecurePix</h1>
+        <p>A secure platform for image privacy and modification</p>
+    </header>
+    <div class="container">
+        <section>
+            <p>SecurePix is a web application designed to provide users with a secure and trustworthy platform for managing their images online. Whether you need to blur sensitive content, modify images, or share securely, SecurePix has you covered.</p>
+        </section>
+    </div>
+    <script>
+        // Add JavaScript for interactive elements here
+    </script>
+</body>
+</html>
+
+{% endblock body %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'background.jpg' %}"); /* Added background image */
+            background-color: #f8f9fa; /* Changed background color to light gray */
+            color: #333;
+            background-size: cover;
+            background-repeat:no-repeat;
+           
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        }
+        section {
+            background-color: #fff; /* Kept section background color white */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .instruction-icon {
+            margin-right: 10px;
+            color: #007bff; /* Kept icon color blue */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Instructions</h1>
+    </header>
+    <div class="container">
+        <section>
+            <ol>
+                <li><i class="fas fa-user-plus instruction-icon"></i> Sign up for an account or log in if you already have one.</li>
+                <li><i class="fas fa-cloud-upload-alt instruction-icon"></i> Upload your images securely to the platform.</li>
+                <li><i class="fas fa-edit instruction-icon"></i> Modify your images using the built-in tools.</li>
+                <li><i class="fas fa-share-alt instruction-icon"></i> Share your modified images with confidence, knowing that your privacy is protected.</li>
+            </ol>
+        </section>
+    </div>
+</body>
+</html>
+
+{% endblock body %}

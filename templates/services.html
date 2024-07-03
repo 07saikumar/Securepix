@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Services{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurePix Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'background.jpg' %}"); /* Added background image */
+            background-size: cover; /* Ensure the background image covers the entire page */
+            background-position: center; /* Center the background image */
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        .service {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .service h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .service p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SecurePix Services</h1>
+        <div class="service">
+            <h2>Image Upload</h2>
+            <p>SecurePix allows users to securely upload images to the platform, giving them control over the images they share.</p>
+        </div>
+        <div class="service">
+            <h2>Image Modification</h2>
+            <p>Users can modify their images using various tools provided by SecurePix, such as flipping and blurring</p>
+        </div>
+        <div class="service">
+            <h2>Protection of Sensitive Information</h2>
+            <p>SecurePix employs techniques to protect sensitive information within images, such as blurring or pixelating certain areas.</p>
+        </div>
+        <div class="service">
+            <h2>Controls</h2>
+            <p>The user can control the security of image by blurring the faces and modifiying it.</p>
+        </div>
+        <div class="service">
+            <h2>Secure Online Community</h2>
+            <p>SecurePix fosters a safe and secure online community where users can engage in image-related activities confidently.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock body %}

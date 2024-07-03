@@ -1,0 +1,140 @@
+{% extends 'secure.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f7ff; /* Light blue background */
+            background-image: url('/static/background.jpg'); /* Background image URL */
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* Form Styles */
+        form {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        span {
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #666;
+            text-align: center;
+        }
+
+        input {
+            background-color: #0000;
+            border: none;
+            margin: 10px 0;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            width: calc(100% - 30px);
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        input:focus {
+            background-color: #e1e1e1;
+        }
+
+        button {
+            background-color: #4384F6;
+            color: #fff;
+            font-size: 16px;
+            padding: 15px 0;
+            border: none;
+            border-radius: 8px;
+            width: calc(100% - 30px);
+            max-width: 320px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3366CC;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #4384F6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #3366CC;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <span>Use your username and password</span>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="footer">
+            Don't have an account? 
+            <a class="nav-link" href="/register/">Register</a>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock body %}
